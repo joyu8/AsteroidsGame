@@ -43,6 +43,9 @@ public void draw()
 }
 
 public void keyPressed(){//sets the booleans equal to true if the keys are pressed
+  if(key == ' '){
+    hi.hyperspace();
+  }
   if(key == 'w'){
     wf = true;
   }
