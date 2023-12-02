@@ -17,11 +17,13 @@ class Floater //Do NOT modify the Floater class! Make changes in the Spaceship c
     myXspeed += ((dAmount) * Math.cos(dRadians));    
     myYspeed += ((dAmount) * Math.sin(dRadians));       
   }   
+  
   public void turn (double degreesOfRotation)   
   {     
     //rotates the floater by a given number of degrees    
     myPointDirection+=degreesOfRotation;   
   }   
+  
   public void move ()   //move the floater in the current direction of travel
   {      
     //change the x and y coordinates by myXspeed and myYspeed       
@@ -47,6 +49,7 @@ class Floater //Do NOT modify the Floater class! Make changes in the Spaceship c
       myCenterY = height;    
     }   
   }   
+  
   public void show ()  //Draws the floater at the current position  
   {             
     fill(myColor);   
