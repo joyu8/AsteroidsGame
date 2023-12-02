@@ -93,4 +93,3 @@ public void keyReleased(){//sets the booleans to false if they are released
     df = false;
   }
 }
-
