@@ -1,5 +1,6 @@
 Spaceship hi = new Spaceship();//declare objects and object list
 Star[] sleep = new Star[47];
+ArrayList <Asteroids> balls = new ArrayList<Asteroids>();
 boolean wf = false;//booleans to make the moving more smooth 
 boolean sf = false;
 boolean af = false;
@@ -13,6 +14,10 @@ public void setup()
     sleep[i] = new Star();
     sleep[i].show();
   }
+  for(int i = 0; i < 47; i++){
+    balls.add(new Asteroids());
+    balls.get(i).show();
+  }
 }
 
 public void draw() 
@@ -20,6 +25,14 @@ public void draw()
   background(0);
   for(int i = 0; i < sleep.length; i++){//draws 47 stars
     sleep[i].show();
+  }
+  
+  for(int i = 0; i < balls.size(); i++){
+    balls.get(i).show();
+    balls.get(i).move();
+    if(balls.get(i).check() == true){
+      balls.remove(i);
+    }
   }
   
   if(wf ^ sf){//if only one of the w or s keys are pressed then u accelerate
@@ -80,3 +93,4 @@ public void keyReleased(){//sets the booleans to false if they are released
     df = false;
   }
 }
+
