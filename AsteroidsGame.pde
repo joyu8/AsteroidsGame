@@ -1,6 +1,10 @@
 Star[] star = new Star[200];
 Spaceship wow = new Spaceship();
 ArrayList <Asteroid> thing = new ArrayList <Asteroid>();
+boolean wa = false;
+boolean sa = false;
+boolean ab = false;
+boolean db = false;
   public void settings(){
    size(500, 500);
    for(int i = 0; i < star.length; i++){
@@ -15,7 +19,6 @@ ArrayList <Asteroid> thing = new ArrayList <Asteroid>();
     for(int i = 0; i < star.length; i++){
       star[i].show();
     }
-    wow.show();
     
     for(int i = 0; i < thing.size(); i++){
       thing.get(i).move();
@@ -31,23 +34,21 @@ ArrayList <Asteroid> thing = new ArrayList <Asteroid>();
       }
     }
     
-    if(key == 'w'){
-      wow.move();
-      wow.accelerate(0.1);
+    if(wa == true){
+     wow.accelerate(0.1);
     }
-    if(key == 'a'){
-      wow.turn(-1.1);
-      wow.move();
+    if(sa == true){
+    wow.turn(-0.1);
     }
-    if(key == 'd'){
-      wow.turn(1.1);
-      wow.move();
+    if(ab == true){
+    wow.turn(10);
   }
-    if(key == 's')
-      wow.accelerate(-0.1);
-      
-    
-  }
+    if(db == true){
+  wow.turn(-10);
+  }    
+  wow.show();
+wow.move();
+}
  
   
   public void keyPressed(){
@@ -55,10 +56,34 @@ ArrayList <Asteroid> thing = new ArrayList <Asteroid>();
       wow.Hyperspace();
       wow.accelerate(0);
     }
-    
+    if(key == 'w'){
+      wa = true;
+    }
+    if(key == 'a'){
+      ab = true;
+    }
+    if(key == 'd'){
+      db = true;
+  }
+    if(key == 's'){
+    sa = true;
+    }
   }
   
-
+ public void keyReleased(){
+       if(key == 'w'){
+      wa = false;
+    }
+    if(key == 'a'){
+      ab = false;
+    }
+    if(key == 'd'){
+      db = false;
+  }
+    if(key == 's'){
+    sa = false;
+    }
+ }
   public class Star{
   private int myX, myY, a;
   public Star(){
