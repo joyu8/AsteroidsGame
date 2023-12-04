@@ -1,95 +1,147 @@
-Spaceship hi = new Spaceship();//declare objects and object list
-Star[] sleep = new Star[47];
-ArrayList <Asteroids> balls = new ArrayList<Asteroids>();
-boolean wf = false;//booleans to make the moving more smooth 
-boolean sf = false;
-boolean af = false;
-boolean df = false;
-
-public void setup() 
-{
-  size(500, 500);
-  frameRate(25);
-  for(int i = 0; i < sleep.length; i++){//creates 47 stars
-    sleep[i] = new Star();
-    sleep[i].show();
+Star[] star = new Star[200];
+Spaceship wow = new Spaceship();
+ArrayList <Asteroid> thing = new ArrayList <Asteroid>();
+boolean wa = false;
+boolean sa = false;
+boolean ab = false;
+boolean db = false;
+  public void settings(){
+   size(500, 500);
+   for(int i = 0; i < star.length; i++){
+      star[i] = new Star();
   }
-  for(int i = 0; i < 47; i++){
-    balls.add(new Asteroids());
-    balls.get(i).show();
+  for(int i = 0; i < 10; i++){
+    thing.add(new Asteroid());
   }
 }
-
-public void draw() 
-{
-  background(0);
-  for(int i = 0; i < sleep.length; i++){//draws 47 stars
-    sleep[i].show();
+  public void draw(){
+    background(0);
+    for(int i = 0; i < star.length; i++){
+      star[i].show();
+    }
+    
+    for(int i = 0; i < thing.size(); i++){
+      thing.get(i).move();
+      thing.get(i).show();
+      float d = dist((int)wow.getX(), (int)wow.getY(), (int)thing.get(i).getX(), (int)thing.get(i).getY());
+      if(d < 10)
+        thing.remove(i);
+      if(thing.size() == 0){
+        frameRate(0);
+        background(255);
+        fill(0);
+        text("GAME CLEAR!", 250, 250);
+      }
+    }
+    
+    if(wa == true){
+     wow.accelerate(0.1);
+    }
+    if(sa == true){
+    wow.turn(-0.1);
+    }
+    if(ab == true){
+    wow.turn(10);
   }
+    if(db == true){
+  wow.turn(-10);
+  }    
+  wow.show();
+wow.move();
+}
+ 
   
-  for(int i = 0; i < balls.size(); i++){
-    balls.get(i).show();
-    balls.get(i).move();
-    if(balls.get(i).check() == true){
-      balls.remove(i);
+  public void keyPressed(){
+    if(key == 'h'){
+      wow.Hyperspace();
+      wow.accelerate(0);
+    }
+    if(key == 'w'){
+      wa = true;
+    }
+    if(key == 'a'){
+      ab = true;
+    }
+    if(key == 'd'){
+      db = true;
+  }
+    if(key == 's'){
+    sa = true;
     }
   }
   
-  if(wf ^ sf){//if only one of the w or s keys are pressed then u accelerate
-    if(wf){
-      hi.accelerate(0.47474747474747);
-    } else {
-      hi.accelerate(-0.47474747474747);
+ public void keyReleased(){
+       if(key == 'w'){
+      wa = false;
     }
-  }
-  
-  if(af ^ df){//if only one of the a or d keys are pressed then u turn
-    if(af){
-      hi.turn(-10);
-    } else {
-      hi.turn(10);
+    if(key == 'a'){
+      ab = false;
     }
+    if(key == 'd'){
+      db = false;
   }
-  
-  hi.move();//moves spaceship
-  hi.show();//draws spaceship
-}
-
-public void keyPressed(){//sets the booleans equal to true if the keys are pressed
-  if(key == ' '){
-    hi.hyperspace();
+    if(key == 's'){
+    sa = false;
+    }
+ }
+  public class Star{
+  private int myX, myY, a;
+  public Star(){
+    myX = (int)(Math.random()*500);
+    myY = (int)(Math.random()*500);
+    a = (int)(Math.random()*5);
   }
-  if(key == 'w'){
-    wf = true;
-  }
-  
-  if(key == 's'){
-    sf = true;
-  }
-  
-  if(key == 'a'){
-    af = true;
-  }
-  
-  if(key == 'd'){
-    df = true;
+  public void show(){
+    fill(255);
+    ellipse(myX, myY, a, a);
   }
 }
 
-public void keyReleased(){//sets the booleans to false if they are released
-  if(key == 'w'){
-    wf = false;
+class Spaceship extends Floater  
+{   
+  public Spaceship(){
+  corners = 4;
+  xCorners = new int[corners];
+  yCorners = new int[corners];
+  xCorners[0] = -8;
+  yCorners[0] = -8;
+  xCorners[1] = 16;
+  yCorners[1] = 0;
+  xCorners[2] = -8;
+  yCorners[2] = 8;
+  xCorners[3] = -2;
+  yCorners[3] = 0;
+  myColor = 255;
+  myCenterX = 250;
+  myCenterY = 250;
   }
   
-  if(key == 's'){
-    sf = false;
+  public void setXspeed(double x){
+    myXspeed = x;
   }
   
-  if(key == 'a'){
-    af = false;
+  public void setX(double x){
+    myCenterX = x;
+  }
+  public double getX(){
+    return myCenterX;
   }
   
-  if(key == 'd'){
-    df = false;
+  public void setY(double y){
+    myCenterY = y;
+  }
+  public double getY(){
+    return myCenterY;
+  }
+ 
+ 
+
+  
+  public void Hyperspace(){
+    myXspeed = 0;
+    myYspeed = 0;
+    myCenterX = (int)(Math.random()*500);
+    myCenterY = (int)(Math.random()*500);
+    myPointDirection = (int)(Math.random()*360);
   }
 }
