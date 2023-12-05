@@ -1,6 +1,11 @@
 Star[] star = new Star[200];
 Spaceship wow = new Spaceship();
 ArrayList <Asteroid> thing = new ArrayList <Asteroid>();
+boolean wa = false;
+boolean sa = false;
+boolean ab = false;
+boolean db = false;
+double b = 0.1;
   public void settings(){
    size(500, 500);
    for(int i = 0; i < star.length; i++){
@@ -15,8 +20,7 @@ ArrayList <Asteroid> thing = new ArrayList <Asteroid>();
     for(int i = 0; i < star.length; i++){
       star[i].show();
     }
-    wow.show();
-    
+
     for(int i = 0; i < thing.size(); i++){
       thing.get(i).move();
       thing.get(i).show();
@@ -30,33 +34,53 @@ ArrayList <Asteroid> thing = new ArrayList <Asteroid>();
         text("GAME CLEAR!", 250, 250);
       }
     }
-    
-    if(key == 'w'){
-      wow.move();
-      wow.accelerate(0.1);
+
+    if(wa == true){
+     wow.accelerate(0.1);
     }
-    if(key == 'a'){
-      wow.turn(-1.1);
-      wow.move();
+    if(db == true){
+    wow.turn(10);
     }
-    if(key == 'd'){
-      wow.turn(1.1);
-      wow.move();
+    if(ab == true){
+    wow.turn(-10);
   }
-    if(key == 's')
-      wow.accelerate(-0.1);
-      
-    
-  }
- 
+   wow.show();
+   wow.move();
+}
   
   public void keyPressed(){
     if(key == 'h'){
       wow.Hyperspace();
       wow.accelerate(0);
     }
-    
+    if(key == 'w'){
+      wa = true;
+    }
+    if(key == 'a'){
+      ab = true;
+    }
+    if(key == 'd'){
+      db = true;
   }
+    if(key == 's'){
+    sa = true;
+    }
+  }
+  
+ public void keyReleased(){
+       if(key == 'w'){
+      wa = false;
+    }
+    if(key == 'a'){
+      ab = false;
+    }
+    if(key == 'd'){
+      db = false;
+  }
+    if(key == 's'){
+    sa = false;
+    }
+ }
   
 
   
@@ -106,5 +130,18 @@ class Spaceship extends Floater
     myCenterX = (int)(Math.random()*500);
     myCenterY = (int)(Math.random()*500);
     myPointDirection = (int)(Math.random()*360);
+  }
+}
+
+public class Star{
+  private int myX, myY, a;
+  public Star(){
+    myX = (int)(Math.random()*500);
+    myY = (int)(Math.random()*500);
+    a = (int)(Math.random()*5);
+  }
+  public void show(){
+    fill(255);
+    ellipse(myX, myY, a, a);
   }
 }
