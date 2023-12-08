@@ -1,4 +1,4 @@
-Star[] star = new Star[200];
+ Star[] star = new Star[200];
 Spaceship wow = new Spaceship();
 ArrayList <Asteroid> thing = new ArrayList <Asteroid>();
 boolean wa = false;
@@ -23,7 +23,7 @@ boolean db = false;
     for(int i = 0; i < thing.size(); i++){
       thing.get(i).move();
       thing.get(i).show();
-      float d = dist((int)wow.getX(), (int)wow.getY(), (int)thing.get(i).getX(), (int)thing.get(i).getY());
+      float d = dist((float)wow.getX(), (float)wow.getY(), (float)thing.get(i).getX(), (float)thing.get(i).getY());
       if(d < 10)
         thing.remove(i);
       if(thing.size() == 0){
