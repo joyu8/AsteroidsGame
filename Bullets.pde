@@ -6,7 +6,7 @@ class Bullets extends Floater
     myXspeed = wow.getXspeed();
     myYspeed = wow.getYspeed();
     myPointDirection = wow.myPointDirection;
-    accelerate(4);
+
   }
   
   public void show(){
