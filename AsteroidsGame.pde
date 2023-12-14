@@ -7,7 +7,7 @@ public boolean sa = false;
 public boolean ab = false;
 public boolean db = false;
 public boolean fire = false;
-  public void settings(){
+  public void setup(){
    size(500, 500);
    for(int i = 0; i < star.length; i++){
       star[i] = new Star();
