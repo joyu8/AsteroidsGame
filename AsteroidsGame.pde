@@ -83,7 +83,7 @@ wow.move();
       sa = true;
     }
     if(key == ' '){
-      thing2.add(new Bullets());
+      thing2.add(new Bullets(wow));
     }
   }
   
