@@ -25,7 +25,7 @@ public boolean fire = false;
       for(int i = 0; i < thing2.size(); i++){
       thing2.get(i).move();
       thing2.get(i).show();
-      thing2.get(i).accelerate(0.1);
+
 
  for(int j = 0; j < thing.size(); j++){ 
       float d = dist((float)thing2.get(i).getX(), (float)thing2.get(i).getY(),(float)thing.get(j).getX(), (float)thing.get(j).getY());
