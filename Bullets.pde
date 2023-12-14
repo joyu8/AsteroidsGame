@@ -1,6 +1,6 @@
 class Bullets extends Floater
 {
-  public Bullets(){
+  public Bullets(Spaceship wow){
     myCenterX = wow.getX();
     myCenterY = wow.getY();
     myXspeed = wow.getXspeed();
