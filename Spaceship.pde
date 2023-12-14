@@ -21,7 +21,12 @@ class Spaceship extends Floater
   public void setXspeed(double x){
     myXspeed = x;
   }
-  
+  public double getXspeed(){
+    return myXspeed;
+  }
+  public double getYspeed(){
+    return myYspeed;
+  }
   public void setX(double x){
     myCenterX = x;
   }
