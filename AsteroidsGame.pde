@@ -63,10 +63,10 @@ public boolean fire = false;
     wow.turn(-0.1);
     }
     if(ab == true){
-    wow.turn(10);
+    wow.turn(-10);
   }
     if(db == true){
-  wow.turn(-10);
+  wow.turn(10);
   }    
   wow.show();
 wow.move();
