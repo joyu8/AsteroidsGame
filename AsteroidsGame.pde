@@ -21,25 +21,29 @@ public boolean fire = false;
     for(int i = 0; i < star.length; i++){
       star[i].show();
     }
-   
-for (int i = 0; i < thing2.size(); i++)
-  {
-    for (int j = 0; j < thing.size(); j++)
-    {
+    for(int j = 0; j < thing.size(); j++){ 
+      for(int i = 0; i < thing2.size(); i++){
+      thing2.get(i).move();
+      thing2.get(i).show();
       float d = dist((float)thing2.get(i).getX(), (float)thing2.get(i).getY(),(float)thing.get(j).getX(), (float)thing.get(j).getY());
-      if(d<25)
-      {
-        //thing2.remove(thing2.get(j));
-        thing.remove(thing.get(i));
+      if(d < 15)
+        fire = true;
+      else 
+        fire = false;
+      if(fire == true){
+        thing.remove(j);
+        thing2.remove(i);
+      }
       }
     }
-  }
-
+  
     if(thing.size() == 0){
         frameRate(0);
+        wow.setX(500);
         background(255);
         fill(0);
-        text("GAME CLEAR!", 250, 250);
+        text("GAME CLEAR!", 200, 250);
+        text("reload the page to play again", 200, 300);
       }
     
     for(int i = 0; i < thing.size(); i++){
@@ -48,6 +52,7 @@ for (int i = 0; i < thing2.size(); i++)
       float d = dist((float)wow.getX(), (float)wow.getY(), (float)thing.get(i).getX(), (float)thing.get(i).getY());
       if(d < 10)
         thing.remove(i);
+
       }
       
       
