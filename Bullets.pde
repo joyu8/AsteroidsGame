@@ -1,11 +1,11 @@
 class Bullets extends Floater
 {
-  public Bullets(Spaceship wow){
-    myCenterX = wow.getX();
-    myCenterY = wow.getY();
-    myXspeed = wow.getXspeed();
-    myYspeed = wow.getYspeed();
-    myPointDirection = wow.myPointDirection;
+  public Bullets(Spaceship e){
+    myCenterX = e.getX();
+    myCenterY = e.getY();
+    myXspeed = e.getXspeed();
+    myYspeed = e.getYspeed();
+    myPointDirection = e.getpoint();
     accelerate(4);
   }
   
@@ -24,7 +24,7 @@ class Bullets extends Floater
   public double getX(){
     return myCenterX;
   }
-  
+
   public void setY(double y){
     myCenterY = y;
   }
