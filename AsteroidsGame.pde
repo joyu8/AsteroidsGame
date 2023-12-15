@@ -29,9 +29,8 @@ for (int i = 0; i < thing2.size(); i++)
       float d = dist((float)thing2.get(i).getX(), (float)thing2.get(i).getY(),(float)thing.get(j).getX(), (float)thing.get(j).getY());
       if(d<25)
       {
-        thing2.remove(thing2.get(j));
+        //thing2.remove(thing2.get(j));
         thing.remove(thing.get(i));
-        break;
       }
     }
   }
