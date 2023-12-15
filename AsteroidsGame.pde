@@ -22,16 +22,15 @@ public boolean fire = false;
       star[i].show();
     }
    
-      for(int i = 0; i < thing2.size(); i++){
+ for(int i = 0; i < thing.size(); i++){
       thing2.get(i).move();
       thing2.get(i).show();
-
-
- for(int j = 0; j < thing.size(); j++){ 
+ for(int j = 0; j < thing2.size(); j++){ 
       float d = dist((float)thing2.get(i).getX(), (float)thing2.get(i).getY(),(float)thing.get(j).getX(), (float)thing.get(j).getY());
       if(d < 10){
-        thing.remove(j);
-        thing2.remove(i);
+        thing2.remove(thing.get(j));
+        thing.remove(thing.get(i));
+        break;
       }
     }
 }
